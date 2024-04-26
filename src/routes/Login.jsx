@@ -34,13 +34,11 @@ export default function Login() {
   };
 
   return (
-    <div className="container flex flex-col items-center justify-center min-h-screen mx-auto ">
-      <div className="bg-pattern w-full ">
-        <h1 className="text-4xl text-indigo-600 font-bold py-5">Login</h1>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen mx-auto bg-pattern">
+      <h1 className="text-4xl text-indigo-600 font-bold py-5">Login</h1>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 border rounded-md p-[2rem] w-[300px] bg-white shadow-lg"
+        className="container space-y-4 border rounded-md p-[2rem] w-[300px] bg-white shadow-lg"
       >
         <MyInput
           for="email"
