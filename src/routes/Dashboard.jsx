@@ -90,14 +90,14 @@ export default function Dashboard() {
               <p className="text-xl font-bold mt-5">Naufal Arif</p>
               <p className="">Electronics Engineering</p>
             </div>
-            <h2 className="py-2 font-bold px-2">Date & Time</h2>
+            {/* <h2 className="py-2 font-bold px-2">Date & Time</h2>
             <div className="rounded-3xl shadow-xl p-5 h-[40%] bg-gradient-to-r from-indigo-600 to-indigo-500">
               <div className="flex items-center justify-center ">
                 <p className="text-white font-thin">
-                  {convertToDateTime(timeEpoch).toLocaleString()}
+                  {convertToDateTime(timeEpoch).toLocaleString("id-ID")}
                 </p>
               </div>
-            </div>
+            </div> */}
           </section>
         </div>
       </div>
