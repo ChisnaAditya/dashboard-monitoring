@@ -8,6 +8,7 @@ import user from "../assets/user.svg";
 import { ref, onValue } from "firebase/database";
 import { database } from "../firebase";
 import { useEffect, useState } from "react";
+import TableComponent from "../components/TableComponent";
 
 export default function Dashboard() {
   const [reading, setReading] = useState([]);
@@ -18,15 +19,12 @@ export default function Dashboard() {
   const path = ref(db, "database");
 
   const convertToDateTime = (timeepoc) => {
-    const date = new Date(timeepoc);
-
-    return date;
+    return new Date(timeepoc * 1000);
   };
 
   useEffect(() => {
     onValue(path, (snapshot) => {
       const data = snapshot.val();
-      // console.log(data);
       setReading(data.reading);
       setMonitoring(data.monitoring);
       setTimeEpoch(
@@ -46,7 +44,6 @@ export default function Dashboard() {
       <div className="container flex items-center justify-evenly h-24  rounded-b-[40px] shadow-xl">
         <h1 className="text-4xl text-black font-bold">Dashboard</h1>
       </div>
-
       <div className="container flex flex-col lg:flex-row gap-4">
         <div className="lg:basis-3/4">
           <section className="py-5">
@@ -90,16 +87,20 @@ export default function Dashboard() {
               <p className="text-xl font-bold mt-5">Naufal Arif</p>
               <p className="">Electronics Engineering</p>
             </div>
-            {/* <h2 className="py-2 font-bold px-2">Date & Time</h2>
+
+            <h2 className="py-2 font-bold px-2">Last Record Date</h2>
             <div className="rounded-3xl shadow-xl p-5 h-[40%] bg-gradient-to-r from-indigo-600 to-indigo-500">
-              <div className="flex items-center justify-center ">
-                <p className="text-white font-thin">
-                  {convertToDateTime(timeEpoch).toLocaleString("id-ID")}
-                </p>
+              <div className="flex items-center justify-center w-full text-white font-thin">
+                {convertToDateTime(timeEpoch).toDateString()}
+                <p className=""></p>
               </div>
-            </div> */}
+            </div>
           </section>
         </div>
+      </div>
+      <div className="tabel container hidden lg:block py-10">
+        <h1 className="text-md text-black font-bold p-2">Record Data</h1>
+        <TableComponent />
       </div>
     </div>
   );
